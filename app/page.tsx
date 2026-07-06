@@ -3,32 +3,32 @@ import { ArrowUpRight } from "lucide-react";
 
 const projects = [
   {
-    title: "Incrementality Simulator",
+    title: "Blue Zone Index",
     description:
-      "A self-serve tool that converts platform-reported retail media metrics into true incremental lift with Bayesian credible intervals. Covers onsite sponsored search, display, Meta, TikTok, Pinterest, and in-store — so you know what actually drove the sale, not just what the platform claims.",
-    href: "https://v0-incrementality-simulator-i76bxvr99-chitra.vercel.app",
-    image: "/incrementality.jpg",
-  },
-  {
-    title: "heft",
-    description:
-      "An auto-experimentation platform built for non-technical operators. Describe a hypothesis in plain language and heft designs the experiment, sets guardrails, and surfaces results — no SQL, no analyst required. Built on Claude Sonnet to make rigorous A/B testing accessible to anyone.",
-    href: "https://heft-1vf81zgwb-chitra.vercel.app",
-    image: "/heft.jpg",
+      "An interactive essay and feedback simulator that coins the Blue Zone Index, a metric tracking how personalization collapses catalog diversity over time. CTR rises while CPU converges to monoculture. Built to make the hidden cost of recommendation loops visible to PMs and researchers.",
+    href: "https://blue-zone-index-anuuhpwoz-chitra.vercel.app",
+    image: "/blue-zone-index.jpg",
   },
   {
     title: "Evenslate.ai",
     description:
-      "A pre-ship evaluation engine for grocery search result pages. Before a merged organic + sponsored slate reaches customers, Evenslate scores it across relevance, diversity, and monetization — catching bad results before they cost you trust or revenue.",
+      "A pre-ship evaluation engine for grocery search result pages. Before a merged organic + sponsored slate reaches customers, Evenslate scores it across relevance, diversity, and monetization. Catch bad results before they cost you trust or revenue.",
     href: "https://evenslate-p2u3iyc5y-chitra.vercel.app",
     image: "/evenslate.jpg",
   },
   {
-    title: "Blue Zone Index",
+    title: "heft",
     description:
-      "An interactive essay and feedback simulator that coins the Blue Zone Index — a metric tracking how personalization collapses catalog diversity over time. CTR rises while CPU converges to monoculture. Built to make the hidden cost of recommendation loops visible to PMs and researchers.",
-    href: "https://blue-zone-index-anuuhpwoz-chitra.vercel.app",
-    image: "/blue-zone-index.jpg",
+      "An auto-experimentation platform built for non-technical operators. Describe a hypothesis in plain language and heft designs the experiment, sets guardrails, and surfaces results. No SQL, no analyst required. Built on Claude Sonnet to make rigorous A/B testing accessible to anyone.",
+    href: "https://heft-1vf81zgwb-chitra.vercel.app",
+    image: "/heft.jpg",
+  },
+  {
+    title: "Incrementality Simulator",
+    description:
+      "A self-serve tool that converts platform-reported retail media metrics into true incremental lift with Bayesian credible intervals. Covers onsite sponsored search, display, Meta, TikTok, Pinterest, and in-store. So you know what actually drove the sale, not just what the platform claims.",
+    href: "https://v0-incrementality-simulator-i76bxvr99-chitra.vercel.app",
+    image: "/incrementality.jpg",
   },
 ];
 
@@ -56,7 +56,7 @@ export default function Home() {
 
       {/* Hero headline */}
       <section className="max-w-4xl mx-auto px-10 pt-16 pb-14">
-        <h1 className="text-4xl md:text-5xl font-semibold tracking-[0.08em] uppercase leading-[1.2] font-[family-name:var(--font-cinzel)]">
+        <h1 className="text-4xl md:text-5xl font-semibold tracking-[-0.01em] leading-[1.2] font-[family-name:var(--font-fraunces)]">
           Build products for more meaningful,<br className="hidden md:block" /> wholesome customer experiences.
         </h1>
       </section>
@@ -83,19 +83,28 @@ export default function Home() {
               I&rsquo;ve built experimentation systems, AI tools, and personalization engines that help millions of shoppers find exactly what they need. My work lives at the intersection of people, data, and rigorous product thinking. I believe the best decisions start with understanding humans. The data just helps you prove it to everyone else.
             </p>
             <p className="text-base text-muted-foreground leading-relaxed max-w-xl mb-4">
-              When I&rsquo;m not thinking about products, I&rsquo;m doodling, decorating my space, or hunting for the next thing to make a room feel just right.
+              When I&rsquo;m not thinking about products, I&rsquo;m doodling, decorating my space, or hunting for the next thing to make a room feel just right ☕ (espresso, preferably single origin).
             </p>
             <p className="text-base text-muted-foreground leading-relaxed max-w-xl">
-              Let&rsquo;s build something worth shipping.
+              🤝 Let&rsquo;s build something worth shipping.
             </p>
             <div className="flex gap-5 mt-7 text-sm">
               <a
-                href="https://linkedin.com/in/chitrasunderrajan"
+                href="https://www.linkedin.com/in/chitrarajan/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1 text-muted-foreground hover:text-foreground transition-colors"
               >
                 LinkedIn <ArrowUpRight className="h-3 w-3" />
+              </a>
+              <span className="text-border">·</span>
+              <a
+                href="https://github.com/Chitra10031991"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1 text-muted-foreground hover:text-foreground transition-colors"
+              >
+                GitHub <ArrowUpRight className="h-3 w-3" />
               </a>
               <span className="text-border">·</span>
               <a
@@ -135,7 +144,7 @@ export default function Home() {
 
               {/* Meta */}
               <div className="flex flex-col justify-center md:w-[45%]">
-                <h3 className="text-2xl font-semibold mb-4 font-[family-name:var(--font-cinzel)] tracking-[0.1em] uppercase">
+                <h3 className="text-2xl font-semibold mb-4 font-[family-name:var(--font-fraunces)] tracking-[-0.01em]">
                   {project.title}
                 </h3>
                 <p className="text-base text-muted-foreground leading-relaxed mb-6">
@@ -155,22 +164,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Side interests carousel */}
-      <section className="max-w-4xl mx-auto px-10 pb-24">
-        <h2 className="text-xs tracking-[0.2em] uppercase font-mono text-muted-foreground mb-8">
-          Outside Work
-        </h2>
-        <div className="flex gap-4 overflow-x-auto pb-2 scrollbar-hide">
-          {[1, 2, 3, 4].map((i) => (
-            <div
-              key={i}
-              className="shrink-0 w-56 h-72 rounded-2xl bg-muted border border-border flex items-center justify-center text-xs text-muted-foreground tracking-widest uppercase"
-            >
-              Photo {i}
-            </div>
-          ))}
-        </div>
-      </section>
 
       {/* Footer */}
       <footer className="border-t border-border px-10 py-8">
