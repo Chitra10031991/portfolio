@@ -1,65 +1,183 @@
 import Image from "next/image";
+import { ArrowUpRight } from "lucide-react";
+
+const projects = [
+  {
+    title: "Incrementality Simulator",
+    description:
+      "A self-serve tool that converts platform-reported retail media metrics into true incremental lift with Bayesian credible intervals. Covers onsite sponsored search, display, Meta, TikTok, Pinterest, and in-store — so you know what actually drove the sale, not just what the platform claims.",
+    href: "https://v0-incrementality-simulator-i76bxvr99-chitra.vercel.app",
+    image: "/incrementality.jpg",
+  },
+  {
+    title: "heft",
+    description:
+      "An auto-experimentation platform built for non-technical operators. Describe a hypothesis in plain language and heft designs the experiment, sets guardrails, and surfaces results — no SQL, no analyst required. Built on Claude Sonnet to make rigorous A/B testing accessible to anyone.",
+    href: "https://heft-1vf81zgwb-chitra.vercel.app",
+    image: "/heft.jpg",
+  },
+  {
+    title: "Evenslate.ai",
+    description:
+      "A pre-ship evaluation engine for grocery search result pages. Before a merged organic + sponsored slate reaches customers, Evenslate scores it across relevance, diversity, and monetization — catching bad results before they cost you trust or revenue.",
+    href: "https://evenslate-p2u3iyc5y-chitra.vercel.app",
+    image: "/evenslate.jpg",
+  },
+  {
+    title: "Blue Zone Index",
+    description:
+      "An interactive essay and feedback simulator that coins the Blue Zone Index — a metric tracking how personalization collapses catalog diversity over time. CTR rises while CPU converges to monoculture. Built to make the hidden cost of recommendation loops visible to PMs and researchers.",
+    href: "https://blue-zone-index-anuuhpwoz-chitra.vercel.app",
+    image: "/blue-zone-index.jpg",
+  },
+];
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+    <div className="min-h-screen bg-background text-foreground">
+      {/* Nav */}
+      <nav className="flex items-center justify-between px-10 py-6">
+        <a
+          href="#work"
+          className="text-xs tracking-[0.2em] uppercase text-muted-foreground hover:text-foreground transition-colors font-mono"
+        >
+          Work
+        </a>
+        <span className="text-xs tracking-[0.3em] uppercase font-[family-name:var(--font-cinzel)] font-semibold">
+          Chitra Sunderrajan
+        </span>
+        <a
+          href="mailto:chitrarajan91@gmail.com"
+          className="text-xs tracking-[0.2em] uppercase text-muted-foreground hover:text-foreground transition-colors font-mono"
+        >
+          Contact
+        </a>
+      </nav>
+
+      {/* Hero headline */}
+      <section className="max-w-4xl mx-auto px-10 pt-16 pb-14">
+        <h1 className="text-4xl md:text-5xl font-semibold tracking-[0.08em] uppercase leading-[1.2] font-[family-name:var(--font-cinzel)]">
+          Build products for more meaningful,<br className="hidden md:block" /> wholesome customer experiences.
+        </h1>
+      </section>
+
+      {/* Intro */}
+      <section className="max-w-4xl mx-auto px-10 pb-24">
+        <div className="flex flex-col md:flex-row items-start gap-12">
+          <div className="shrink-0">
             <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+              src="/chitra.jpg"
+              alt="Chitra Sunderrajan"
+              width={200}
+              height={200}
+              className="rounded-2xl object-cover object-top w-44 h-44 md:w-52 md:h-52"
+              unoptimized
+              priority
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+          </div>
+          <div className="flex-1 pt-1">
+            <p className="text-lg md:text-xl italic leading-relaxed text-foreground mb-5 max-w-xl">
+              👋 Hi, I&rsquo;m Chitra. I have 9+ years of experience turning human behavior into products and platforms people love. 7.5 of those at Albertsons, and the years before that wearing every hat possible at early-stage startups.
+            </p>
+            <p className="text-base text-muted-foreground leading-relaxed max-w-xl mb-4">
+              I&rsquo;ve built experimentation systems, AI tools, and personalization engines that help millions of shoppers find exactly what they need. My work lives at the intersection of people, data, and rigorous product thinking. I believe the best decisions start with understanding humans. The data just helps you prove it to everyone else.
+            </p>
+            <p className="text-base text-muted-foreground leading-relaxed max-w-xl mb-4">
+              When I&rsquo;m not thinking about products, I&rsquo;m doodling, decorating my space, or hunting for the next thing to make a room feel just right.
+            </p>
+            <p className="text-base text-muted-foreground leading-relaxed max-w-xl">
+              Let&rsquo;s build something worth shipping.
+            </p>
+            <div className="flex gap-5 mt-7 text-sm">
+              <a
+                href="https://linkedin.com/in/chitrasunderrajan"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1 text-muted-foreground hover:text-foreground transition-colors"
+              >
+                LinkedIn <ArrowUpRight className="h-3 w-3" />
+              </a>
+              <span className="text-border">·</span>
+              <a
+                href="mailto:chitrarajan91@gmail.com"
+                className="text-muted-foreground hover:text-foreground transition-colors"
+              >
+                chitrarajan91@gmail.com
+              </a>
+            </div>
+          </div>
         </div>
-      </main>
+      </section>
+
+      {/* Current Work */}
+      <section id="work" className="max-w-4xl mx-auto px-10 pb-24">
+        <h2 className="text-xs tracking-[0.2em] uppercase font-mono text-muted-foreground mb-12">
+          Current Work
+        </h2>
+
+        <div className="flex flex-col divide-y divide-border">
+          {projects.map((project) => (
+            <div
+              key={project.title}
+              className="flex flex-col md:flex-row gap-8 md:gap-12 py-12 first:pt-0"
+            >
+              {/* Screenshot */}
+              <div className="md:w-[55%] shrink-0 overflow-hidden rounded-xl border border-border">
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  width={900}
+                  height={560}
+                  className="w-full h-auto object-cover"
+                  unoptimized
+                />
+              </div>
+
+              {/* Meta */}
+              <div className="flex flex-col justify-center md:w-[45%]">
+                <h3 className="text-2xl font-semibold mb-4 font-[family-name:var(--font-cinzel)] tracking-[0.1em] uppercase">
+                  {project.title}
+                </h3>
+                <p className="text-base text-muted-foreground leading-relaxed mb-6">
+                  {project.description}
+                </p>
+                <a
+                  href={project.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-xs tracking-[0.15em] uppercase text-muted-foreground hover:text-[oklch(0.72_0.18_112)] transition-colors w-fit"
+                >
+                  View project <ArrowUpRight className="h-3.5 w-3.5" />
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Side interests carousel */}
+      <section className="max-w-4xl mx-auto px-10 pb-24">
+        <h2 className="text-xs tracking-[0.2em] uppercase font-mono text-muted-foreground mb-8">
+          Outside Work
+        </h2>
+        <div className="flex gap-4 overflow-x-auto pb-2 scrollbar-hide">
+          {[1, 2, 3, 4].map((i) => (
+            <div
+              key={i}
+              className="shrink-0 w-56 h-72 rounded-2xl bg-muted border border-border flex items-center justify-center text-xs text-muted-foreground tracking-widest uppercase"
+            >
+              Photo {i}
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="border-t border-border px-10 py-8">
+        <p className="text-xs text-muted-foreground font-mono text-center">
+          Built with Next.js · {new Date().getFullYear()}
+        </p>
+      </footer>
     </div>
   );
 }
