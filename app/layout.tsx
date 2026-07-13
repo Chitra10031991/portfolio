@@ -21,7 +21,7 @@ const fraunces = Fraunces({
 });
 
 export const metadata: Metadata = {
-  title: "Chitra Sunderrajan — Product Manager",
+  title: "Chitra Sunderrajan | Product Manager",
   description:
     "AI-native portfolio by Chitra Sunderrajan, PM at Albertsons. Projects in experimentation, personalization, and search.",
 };
