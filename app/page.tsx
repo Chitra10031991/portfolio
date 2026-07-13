@@ -189,17 +189,30 @@ export default function Home() {
               key={project.title}
               className="flex flex-col md:flex-row gap-8 md:gap-12 py-12 first:pt-0"
             >
-              {/* Screenshot */}
+              {/* Screenshot — interactive: hover/focus reveals map links */}
               {project.image && (
-                <div className="md:w-[55%] shrink-0 overflow-hidden rounded-xl border border-border">
+                <div className="group relative md:w-[55%] shrink-0 self-start overflow-hidden rounded-xl border border-border">
                   <Image
                     src={project.image}
                     alt={project.title}
-                    width={900}
-                    height={560}
-                    className="w-full h-auto object-cover"
+                    width={1200}
+                    height={750}
+                    className="w-full h-auto object-cover transition duration-300 group-hover:scale-[1.02] group-hover:brightness-95"
                     unoptimized
                   />
+                  <div className="absolute inset-0 flex items-center justify-center gap-3 bg-background/40 opacity-0 pointer-events-none transition-opacity duration-300 group-hover:opacity-100 group-hover:pointer-events-auto focus-within:opacity-100 focus-within:pointer-events-auto">
+                    {project.links.map((link) => (
+                      <a
+                        key={link.label}
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 rounded-full border border-border bg-card/95 px-4 py-2 text-xs tracking-[0.15em] uppercase text-foreground shadow-sm hover:text-[oklch(0.72_0.18_112)] transition-colors"
+                      >
+                        {link.label} <ArrowUpRight className="h-3.5 w-3.5" />
+                      </a>
+                    ))}
+                  </div>
                 </div>
               )}
 
