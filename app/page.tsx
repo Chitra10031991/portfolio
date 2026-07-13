@@ -32,6 +32,19 @@ const projects = [
   },
 ];
 
+const passionProjects = [
+  {
+    title: "Saved, Sorted, Mapped",
+    description:
+      "My Instagram saves were a graveyard of good intentions — hundreds of bookmarked cafés, bakeries, vintage shops, and exhibitions I'd never see again. So I pointed Claude at my saved collections: it read every post, extracted 195 places across Paris and Copenhagen, verified each address and neighborhood through web research, and scored them on a scale from 'local gem' to 'tourist trap.' The output: interactive maps and spreadsheets I actually use to plan trips. A weekend experiment in turning algorithmic clutter into something with intention.",
+    image: null as string | null,
+    links: [
+      { label: "Paris map", href: "/maps/paris.html" },
+      { label: "Copenhagen map", href: "/maps/copenhagen.html" },
+    ],
+  },
+];
+
 export default function Home() {
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -158,6 +171,63 @@ export default function Home() {
                 >
                   View project <ArrowUpRight className="h-3.5 w-3.5" />
                 </a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Passion Projects */}
+      <section id="passion" className="max-w-4xl mx-auto px-10 pb-24">
+        <h2 className="text-xs tracking-[0.2em] uppercase font-mono text-muted-foreground mb-12">
+          Passion Projects
+        </h2>
+
+        <div className="flex flex-col divide-y divide-border">
+          {passionProjects.map((project) => (
+            <div
+              key={project.title}
+              className="flex flex-col md:flex-row gap-8 md:gap-12 py-12 first:pt-0"
+            >
+              {/* Screenshot */}
+              {project.image && (
+                <div className="md:w-[55%] shrink-0 overflow-hidden rounded-xl border border-border">
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    width={900}
+                    height={560}
+                    className="w-full h-auto object-cover"
+                    unoptimized
+                  />
+                </div>
+              )}
+
+              {/* Meta */}
+              <div
+                className={`flex flex-col justify-center ${
+                  project.image ? "md:w-[45%]" : "w-full"
+                }`}
+              >
+                <h3 className="text-2xl font-semibold mb-4 font-[family-name:var(--font-fraunces)] tracking-[-0.01em]">
+                  {project.title}
+                </h3>
+                <p className="text-base text-muted-foreground leading-relaxed mb-6">
+                  {project.description}
+                </p>
+                <div className="flex gap-6">
+                  {project.links.map((link) => (
+                    <a
+                      key={link.label}
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-xs tracking-[0.15em] uppercase text-muted-foreground hover:text-[oklch(0.72_0.18_112)] transition-colors w-fit"
+                    >
+                      {link.label} <ArrowUpRight className="h-3.5 w-3.5" />
+                    </a>
+                  ))}
+                </div>
               </div>
             </div>
           ))}
