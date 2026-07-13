@@ -37,7 +37,7 @@ const passionProjects = [
     title: "Saved, Sorted, Mapped",
     description:
       "My Instagram saves were a graveyard of good intentions — hundreds of bookmarked cafés, bakeries, vintage shops, and exhibitions I'd never see again. So I pointed Claude at my saved collections: it read every post, extracted 195 places across Paris and Copenhagen, verified each address and neighborhood through web research, and scored them on a scale from 'local gem' to 'tourist trap.' The output: interactive maps and spreadsheets I actually use to plan trips. A weekend experiment in turning algorithmic clutter into something with intention.",
-    image: null as string | null,
+    image: "/passion-maps.jpg" as string | null,
     links: [
       { label: "Paris map", href: "/maps/paris.html" },
       { label: "Copenhagen map", href: "/maps/copenhagen.html" },
