@@ -96,7 +96,7 @@ export default function Home() {
           </div>
           <div className="flex-1 pt-1">
             <p className="text-lg md:text-xl italic leading-relaxed text-foreground mb-5 max-w-xl">
-              👋 Hi, I&rsquo;m Chitra. I have 9+ years of experience turning human behavior into products and platforms people love. 7.5 of those at Albertsons, and the years before that wearing every hat possible at early-stage startups.
+              👋 Hi, I&rsquo;m Chitra. I have 10+ years of experience turning human behavior into products and platforms people love. 7.5 of those at Albertsons, and the years before that wearing every hat possible at early-stage startups.
             </p>
             <p className="text-base text-muted-foreground leading-relaxed max-w-xl mb-4">
               I&rsquo;ve built experimentation systems, AI tools, and personalization engines that help millions of shoppers find exactly what they need. My work lives at the intersection of people, data, and rigorous product thinking. I believe the best decisions start with understanding humans. The data just helps you prove it to everyone else.
