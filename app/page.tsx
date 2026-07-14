@@ -36,11 +36,17 @@ const passionProjects = [
   {
     title: "Saved, Sorted, Mapped",
     description:
-      "My Instagram saves were a graveyard of good intentions. Hundreds of bookmarked cafés, bakeries, vintage shops, and exhibitions I'd never see again. So I pointed Claude at my saved collections: it read every post, extracted 195 places across Paris and Copenhagen, verified each address and neighborhood through web research, and scored them on a scale from 'local gem' to 'tourist trap.' The output: interactive maps and spreadsheets I actually use to plan trips. A weekend experiment in turning algorithmic clutter into something with intention.",
+      "My Instagram saves were a graveyard of good intentions. Hundreds of bookmarked cafés, bakeries, vintage shops, and exhibitions I'd never see again. So I pointed Claude at my saved collections: it read 300+ posts, extracted and verified ~450 places across eight cities, researched every address and neighborhood, and scored each spot from 'local gem' to 'tourist trap.' The output: interactive city maps I actually use to plan trips. A weekend experiment in turning algorithmic clutter into something with intention.",
     image: "/passion-maps.jpg" as string | null,
     links: [
-      { label: "Paris map", href: "/maps/paris.html" },
-      { label: "Copenhagen map", href: "/maps/copenhagen.html" },
+      { label: "Paris", href: "/maps/paris.html" },
+      { label: "Copenhagen", href: "/maps/copenhagen.html" },
+      { label: "Tokyo", href: "/maps/tokyo.html" },
+      { label: "London", href: "/maps/london.html" },
+      { label: "Stockholm", href: "/maps/stockholm.html" },
+      { label: "Osaka", href: "/maps/osaka.html" },
+      { label: "Madrid", href: "/maps/madrid.html" },
+      { label: "LA", href: "/maps/la.html" },
     ],
   },
 ];
@@ -189,30 +195,17 @@ export default function Home() {
               key={project.title}
               className="flex flex-col md:flex-row gap-8 md:gap-12 py-12 first:pt-0"
             >
-              {/* Screenshot — interactive: hover/focus reveals map links */}
+              {/* Diagram — decorative; the city pills below open each map */}
               {project.image && (
-                <div className="group relative md:w-[55%] shrink-0 self-start overflow-hidden rounded-xl border border-border">
+                <div className="md:w-[55%] shrink-0 self-start overflow-hidden rounded-xl border border-border">
                   <Image
                     src={project.image}
                     alt={project.title}
                     width={1200}
                     height={750}
-                    className="w-full h-auto object-cover transition duration-300 group-hover:scale-[1.02] group-hover:brightness-95"
+                    className="w-full h-auto object-cover"
                     unoptimized
                   />
-                  <div className="absolute inset-0 flex items-center justify-center gap-3 bg-background/40 opacity-0 pointer-events-none transition-opacity duration-300 group-hover:opacity-100 group-hover:pointer-events-auto focus-within:opacity-100 focus-within:pointer-events-auto">
-                    {project.links.map((link) => (
-                      <a
-                        key={link.label}
-                        href={link.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 rounded-full border border-border bg-card/95 px-4 py-2 text-xs tracking-[0.15em] uppercase text-foreground shadow-sm hover:text-[oklch(0.72_0.18_112)] transition-colors"
-                      >
-                        {link.label} <ArrowUpRight className="h-3.5 w-3.5" />
-                      </a>
-                    ))}
-                  </div>
                 </div>
               )}
 
@@ -228,16 +221,16 @@ export default function Home() {
                 <p className="text-base text-muted-foreground leading-relaxed mb-6">
                   {project.description}
                 </p>
-                <div className="flex gap-6">
+                <div className="flex flex-wrap gap-2.5">
                   {project.links.map((link) => (
                     <a
                       key={link.label}
                       href={link.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 text-xs tracking-[0.15em] uppercase text-muted-foreground hover:text-[oklch(0.72_0.18_112)] transition-colors w-fit"
+                      className="inline-flex items-center gap-1 rounded-full border border-border px-3 py-1.5 text-[11px] tracking-[0.15em] uppercase text-muted-foreground hover:text-[oklch(0.72_0.18_112)] hover:border-[oklch(0.72_0.18_112)] transition-colors"
                     >
-                      {link.label} <ArrowUpRight className="h-3.5 w-3.5" />
+                      {link.label} <ArrowUpRight className="h-3 w-3" />
                     </a>
                   ))}
                 </div>

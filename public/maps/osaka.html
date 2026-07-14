@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>Chitra's Osaka Map</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<style>
+html,body{margin:0;height:100%;font-family:-apple-system,'Segoe UI',Arial,sans-serif}
+#map{height:100%}
+.hdr{position:absolute;top:12px;left:56px;z-index:1000;background:#fff;padding:8px 16px;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.2);font-weight:700;font-size:15px}
+.hdr small{font-weight:400;color:#666;display:block}
+.legend{position:absolute;bottom:20px;left:12px;z-index:1000;background:#fff;padding:10px 14px;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.2);font-size:12.5px;line-height:1.9}
+.legend label{display:flex;align-items:center;gap:7px;cursor:pointer}
+.dot{width:12px;height:12px;border-radius:50%;display:inline-block;border:2px solid #fff;box-shadow:0 0 2px rgba(0,0,0,.5)}
+.pop b{font-size:13.5px}.pop .arr{color:#fff;border-radius:6px;padding:1px 7px;font-size:11px;font-weight:700;margin-left:4px}
+.pop p{margin:5px 0 2px;font-size:12.5px}.pop .ad{color:#777;font-size:11.5px}
+.pop .sent{font-size:11.5px;font-style:italic;color:#444;margin-top:4px}
+</style></head><body>
+<div id="map"></div>
+<div class="hdr">Chitra's Osaka Map <small>17 spots from Instagram saves &middot; July 2026</small></div>
+<div class="legend" id="legend"></div>
+<script>
+const CATS={"coffee": {"label": "Coffee & Cafes", "color": "#8a5a2b"}, "bakery": {"label": "Bakery & Pastry", "color": "#d97706"}, "sweets": {"label": "Sweets & Ice Cream", "color": "#db2777"}, "restaurant": {"label": "Restaurants", "color": "#dc2626"}, "bar": {"label": "Bars & Nightlife", "color": "#7c3aed"}, "shopping": {"label": "Shopping", "color": "#2563eb"}, "culture": {"label": "Museums & Culture", "color": "#0d9488"}}, PLACES=[{"cat": "shopping", "name": "Vintage Qoo Osaka", "famous": "3,000+ curated vintage Chanel, Hermes, Rolex pieces", "arr": "Shinsaibashi", "addr": "MI Cube, 1-1-16 Shinsaibashisuji, Chuo-ku", "lat": 34.6757, "lng": 135.5013, "typ": "Luxury vintage", "sent": "Worth it - fair fixed pricing, tax-free, calmer than tourist resale"}, {"cat": "sweets", "name": "Rikuro Ojisan no Mise (Namba)", "famous": "Jiggly bell-stamped fresh-baked cheesecake under 1,000 yen", "arr": "Namba", "addr": "3-2-28 Namba, Chuo-ku", "lat": 34.6661, "lng": 135.501, "typ": "Cheesecake", "sent": "Worth it - locals genuinely buy these; line moves fast"}, {"cat": "sweets", "name": "Konnichiwa Crepe", "famous": "Homemade seasonal fruit crepes, Hokkaido cream", "arr": "Hagoromo (Takaishi - suburb)", "addr": "1-12-3 Hagoromo, Takaishi City", "lat": 34.528, "lng": 135.437, "typ": "Crepes", "sent": "Only worth it if already down the Nankai line; neighborhood gem"}, {"cat": "coffee", "name": "Osora Cafe", "famous": "1935 fruit-shop turned cafe; strawberry toast, giant parfaits", "arr": "Nishinakajima", "addr": "3-18-8 Nishinakajima, Yodogawa-ku", "lat": 34.7269, "lng": 135.4988, "typ": "Food + coffee (cafe)", "sent": "Worth it - Tabelog Top-100 cafe; go weekday at open"}, {"cat": "sweets", "name": "Momovege (Nakazakicho)", "famous": "Greengrocer's-wife peach parfaits and fresh fruit desserts", "arr": "Nakazakicho", "addr": "2-2 Kurosaki-cho, Kita-ku", "lat": 34.7093, "lng": 135.5062, "typ": "Fruit desserts", "sent": "Branch status unconfirmed - verify open; original is in Kashiwara"}, {"cat": "sweets", "name": "Kankandou", "famous": "Wobbly 'Guragura Tsutenkaku' stacked castella skewer, 600 yen", "arr": "Shinsekai", "addr": "3-3-10 Ebisuhigashi, Naniwa-ku", "lat": 34.6494, "lng": 135.5065, "typ": "Baby castella", "sent": "Viral queues - TikTok bait but fun and cheap; cash only"}, {"cat": "culture", "name": "Katsuo-ji Temple", "famous": "'Temple of Victory'; thousands of winning daruma dolls", "arr": "Minoh (day trip)", "addr": "2914-1 Aomatani, Minoh City", "lat": 34.858, "lng": 135.496, "typ": "Temple", "sent": "Worth it - go early weekday; autumn weekends get bus tours"}, {"cat": "shopping", "name": "Orange Street (Tachibana-dori)", "famous": "800m strip of indie fashion, furniture and coffee", "arr": "Minami-Horie", "addr": "Minami-Horie 1-2 chome, Nishi-ku", "lat": 34.6714, "lng": 135.4948, "typ": "Shopping street", "sent": "Local gem - the antidote to Shinsaibashi crowds; weekdays best"}, {"cat": "bar", "name": "CLUB UNDER", "famous": "Underground techno/trance club with a serious sound system", "arr": "Soemoncho (Namba)", "addr": "Soemoncho Bldg B1, 7-9 Soemoncho", "lat": 34.6697, "lng": 135.5028, "typ": "DJ club", "sent": "Permanently closed as of 2026 - watch their IG for a successor venue"}, {"cat": "culture", "name": "teamLab: Field of Wind, Rain and Sun", "famous": "Permanent teamLab in a can factory; night rain becomes light crystals", "arr": "Higashiosaka (day trip)", "addr": "1-1-15 Wakaehigashi-machi, Higashiosaka", "lat": 34.657, "lng": 135.612, "typ": "Art + cafe", "sent": "Worth it - only ~6 guests per cafe session; book weeks ahead"}, {"cat": "restaurant", "name": "Dekasan", "famous": "Oversized fluffy egg meringue sando and rare harami steak sando", "arr": "Matsuyamachi (Ura-Namba)", "addr": "3-5-17 Kawaraya-machi, Chuo-ku", "lat": 34.668, "lng": 135.5118, "typ": "Egg + steak sandos", "sent": "Viral queues - local queue, sells out; arrive before noon"}, {"cat": "bakery", "name": "Patisserie Grenier", "famous": "Made-to-order custard mille-feuille, additive-free bakes", "arr": "Umeda/Kita", "addr": "Hankyu Grand Bldg 1F, 8-47 Kakuda-cho", "lat": 34.7031, "lng": 135.5, "typ": "Pastry (mille-feuille)", "sent": "Worth it - mille-feuille sells out fast; weekday morning"}, {"cat": "bakery", "name": "Masahiko Ozumi Paris", "famous": "Paris-trained avant-garde pastry; Zabuton Mont Blanc", "arr": "Kitahama", "addr": "3-1-18 Kitahama, Chuo-ku", "lat": 34.6917, "lng": 135.502, "typ": "Pastry (avant-garde)", "sent": "Worth it - office-district calm; signatures gone by afternoon"}, {"cat": "sweets", "name": "CAFE ANNON (Namba honten)", "famous": "Copper-griddle souffle pancakes; boozy late-night parfaits", "arr": "Ura-Namba", "addr": "4-20 Namba-Sennichimae, Chuo-ku", "lat": 34.6632, "lng": 135.5035, "typ": "Souffle pancakes", "sent": "Worth it - open to 22:45; go late post-drinks to dodge queues"}, {"cat": "coffee", "name": "Arabiya Coffee", "famous": "Retro kissaten since 1951; hand-drip coffee and hotcakes", "arr": "Namba (Hozenji Yokocho)", "addr": "1-6-7 Namba, Chuo-ku", "lat": 34.6676, "lng": 135.5017, "typ": "Coffee (kissaten)", "sent": "Local gem - genuine oasis amid Minami chaos; smoking permitted"}, {"cat": "coffee", "name": "Ourlog Coffee Roasters", "famous": "Concrete-minimal roastery; matcha latte and matcha cheesecake", "arr": "Honjo-Higashi (Nakazakicho fringe)", "addr": "1-24-7 Honjo-Higashi, Kita-ku", "lat": 34.7126, "lng": 135.5068, "typ": "Coffee + matcha", "sent": "Local gem - quieter than Nakazakicho proper, still expect a line"}, {"cat": "shopping", "name": "KITH Osaka + KITH Treats", "famous": "KITH's 2nd Japan flagship (Mar 2025); Treats cereal ice cream", "arr": "Umeda (Grand Green)", "addr": "Umekita Green Place 1F, 5-1 Ofuka-cho, Kita-ku", "lat": 34.7062, "lng": 135.493, "typ": "Streetwear flagship", "sent": "Worth it - hype queues have eased; weekday mornings easiest"}];
+const map=L.map('map').setView([34.68, 135.501],13);
+L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',{attribution:'&copy; OpenStreetMap &copy; CARTO',maxZoom:19}).addTo(map);
+const groups={};
+for(const k in CATS) groups[k]=L.layerGroup().addTo(map);
+PLACES.forEach(p=>{
+  const c=CATS[p.cat].color;
+  const m=L.circleMarker([p.lat,p.lng],{radius:8,fillColor:c,fillOpacity:.92,color:'#fff',weight:2});
+  m.bindPopup(`<div class="pop"><b>${p.name}</b><span class="arr" style="background:${c}">${p.arr}</span><p>${p.famous}</p><div class="ad">${p.addr}</div><div class="ad" style="color:${c};font-weight:600">${p.typ}</div><div class="sent">${p.sent}</div></div>`);
+  m.addTo(groups[p.cat]);
+});
+const lg=document.getElementById('legend');
+for(const k in CATS){
+  const n=PLACES.filter(p=>p.cat===k).length;
+  if(n===0) continue;
+  const row=document.createElement('label');
+  row.innerHTML=`<input type="checkbox" checked data-k="${k}"><span class="dot" style="background:${CATS[k].color}"></span>${CATS[k].label} (${n})`;
+  row.querySelector('input').onchange=e=>{e.target.checked?map.addLayer(groups[k]):map.removeLayer(groups[k])};
+  lg.appendChild(row);
+}
+map.fitBounds([[34.645, 135.485], [34.73, 135.515]]);
+</script></body></html>
