@@ -157,7 +157,7 @@ export default function Home() {
               className="flex flex-col md:flex-row gap-8 md:gap-12 py-12 first:pt-0"
             >
               {/* Screenshot */}
-              <div className="md:w-[55%] shrink-0 overflow-hidden rounded-xl border border-border">
+              <div className="md:w-[55%] shrink-0 self-start overflow-hidden rounded-xl border border-border">
                 <Image
                   src={project.image}
                   alt={project.title}
