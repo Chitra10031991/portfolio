@@ -6,7 +6,7 @@ const projects = [
     title: "The Decision Layer",
     description:
       "Behind every personalized customer experience is a platform that decides what to show, how to measure it, and whether it actually works. I spearheaded the unification of experimentation across a leading grocery retailer by building a shared decision layer that standardized assignment, instrumentation, and measurement across frontend applications, backend services, and AI-powered recommendation systems. Today, I build AI-native platforms that help organizations learn faster, make better decisions, and scale customer impact with confidence.",
-    href: "/decision-layer.html",
+    href: "/decision-layer/index.html",
     image: "/decision-layer.jpg",
   },
   {
